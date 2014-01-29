@@ -10,7 +10,12 @@ namespace TransactionTest
     {
         static void Main(string[] args)
         {
-
+            var m = new Movie { Title = "Rocky II" };
+            using (var ctx = new TransactionTestDbContext())
+            {
+                ctx.Movies.Add(m);
+                ctx.SaveChanges();
+            }
         }
     }
 }
